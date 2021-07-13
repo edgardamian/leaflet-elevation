@@ -42,13 +42,13 @@
 
 	<script>
 		var mylocale = {
-			"Total Length: ": "L: ",
-			"Max Elevation: ": "E Max: ",
-			"Min Elevation: ": "E Min: ",
+			"Total Length: ": "Largo del perfil: ",
+			"Max Elevation: ": "Elevación máxima: ",
+			"Min Elevation: ": "Elevación mínima: ",
 			"Total Ascent: ": "A: ",
 			"Total Descent: ": "D: ",
-			"Min Slope: ": "S Min: ",
-			"Max Slope: ": "S Max: ",
+			//"Min Slope: ": "S Min: ",
+			//"Max Slope: ": "S Max: ",
 		};
 
 		L.registerLocale('it', mylocale);
@@ -56,8 +56,9 @@
 
 		let opts = {
 			map: {
-				center: [41.4583, 12.7059],
-				zoom: 5,
+				mapTypeId: 'topo',
+				center: [19.7006, -101.186],
+				zoom: 10,
 				fullscreenControl: false,
 				resizerControl: false,
 				minimapControl: false,
@@ -69,27 +70,67 @@
 					closeOnZeroBearing: true
 				},
 			},
-			elevationControl: {
+			elevationControl: { 
 				tracks: {
 					track_1: {
-						url: "https://raruto.github.io/leaflet-elevation/examples/demo.geojson",
-						color: "#3490dc"
+						url:"https://raw.githubusercontent.com/edgardamian/perfiles_nombres/main/CERRO%20DE%20LAS%20ÁNIMAS.geojson"
 					},
 					track_2: {
-						url: "https://raruto.github.io/leaflet-elevation/examples/waypoints.geojson",
-						color: "#f6993f"
+						url: "https://raw.githubusercontent.com/edgardamian/perfiles_nombres/main/CERRO%20DEL%20MELÓN.geojson",
+
+					},
+					track_3: {
+						url: "https://raw.githubusercontent.com/edgardamian/perfiles_nombres/main/CERRO%20DEL%20QUINCEO.geojson",
+
+					},
+					track_4: {
+						url: "https://raw.githubusercontent.com/edgardamian/perfiles_nombres/main/CERRO%20DEL%20VENADO.geojson",
+					},
+					track_5: {
+						url: "https://raw.githubusercontent.com/edgardamian/perfiles_nombres/main/CERRO%20DEL%20ÁGUILA.geojson",
+					},
+					track_6: {
+						url: "https://raw.githubusercontent.com/edgardamian/perfiles_nombres/main/CERRO%20EL%20GALLINERO.geojson",
+					},
+					track_7: {
+						url: "https://raw.githubusercontent.com/edgardamian/perfiles_nombres/main/CERRO%20LA%20TRAMPA.geojson",
+					},
+					track_8: {
+						url: "https://raw.githubusercontent.com/edgardamian/perfiles_nombres/main/CERRO%20SANAMBO.geojson",
+					},
+					track_9: {
+						url: "https://raw.githubusercontent.com/edgardamian/perfiles_nombres/main/CERRO%20VERDE.geojson",
+					},
+					track_10: {
+						url: "https://raw.githubusercontent.com/edgardamian/perfiles_nombres/main/PICO%20AZUL.geojson",
+					},
+					track_11: {
+						url: "https://raw.githubusercontent.com/edgardamian/perfiles_nombres/main/TETILLAS%20DEL%20QUINCEO.geojson",
 					},
 				},
 				options: {
-					position: "bottomleft",
+					theme: "lime-theme",
 					collapsed: false,
+					autohide: false,
+					autofitBounds: true,
+					position: "bottomleft",
 					detached: false,
-					slope: true,
+					summary: "inline",
+					imperial: false,
+					altitude: true,
+					//slope: "disabled",
+					speed: false,
+					acceleration: false,
+					time: false,
+					legend: true,
+					followMarker: true,
+					almostOver: true,
+					distanceMarkers: true,
 				},
 			},
 			layersControl: {
 				options: {
-					collapsed: false,
+					collapsed: false
 				},
 			},
 		};
@@ -126,7 +167,7 @@
 					if (i == 0) initHooks(layer._leaflet_id);
 					else if (i == Object.values(tracks).length - 1) layers.fire('tracks_loaded');
 				});
-		}
+		}	
 
 		function setElevationTrace(id) {
 			let layer = layers.getLayer(id);
@@ -146,10 +187,6 @@
 			});
 		}
 	</script>
-
-	<a href="https://github.com/Raruto/leaflet-elevation" class="view-on-github" style="position: fixed;top: 10px;left: calc(50% - 60px);z-index: 9999;"> <img alt="View on Github" src="https://raruto.github.io/img/view-on-github.png" title="View on Github"
-		 width="163"> </a>
-
 </body>
 
 </html>
